@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cta_email'])) {
 <!-- Hero Section + Headline + Subheadline -->
 <section>
     <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="row flex-lg-row-reverse g-5 py-5">
           <div class="col-10 col-sm-8 col-lg-6">
             <img
               src="bootstrap-themes.png"
@@ -46,6 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cta_email'])) {
           </div>
         </div>
       </div>
+</section>
+
+<section id="tentang">
+
 </section>
 
 <!-- Item Produk (Grid dengan Cards) -->
@@ -102,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cta_email'])) {
 </section>
 
 <!-- Testimoni -->
-<section class="my-5 bg-dark py-4 rounded">
+<section id="testimoni" class="my-5 bg-dark py-4 rounded">
     <h2 class="text-center mb-4">Apa Kata Pelanggan</h2>
     <div class="row g-4">
         <div class="col-md-4">
@@ -144,7 +148,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cta_email'])) {
     </form>
     <small class="text-muted">*Promo terbatas, berlaku syarat & ketentuan</small>
 </section>
-
-div
 
 <?php include 'includes/footer.php'; ?>

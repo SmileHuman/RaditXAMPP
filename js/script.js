@@ -85,3 +85,59 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// REGISTER
+// Load data dari localStorage
+function loadMemberData() {
+    // Load pesanan
+    const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+    const orderTable = document.getElementById('orderHistoryTable');
+    
+    if (orders.length === 0) {
+        orderTable.innerHTML = '<tr><td colspan="6" class="text-center text-white-50">Belum ada pesanan</td></tr>';
+        document.getElementById('totalOrders').innerText = '0';
+    } else {
+        orderTable.innerHTML = '';
+        orders.forEach((order, index) => {
+            const row = `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${order.product}</td>
+                    <td>${order.price}</td>
+                    <td>${order.quantity}</td>
+                    <td>${order.date}</td>
+                    <td><span class="badge bg-warning text-dark">${order.status}</span></td>
+                </tr>
+            `;
+            orderTable.insertAdjacentHTML('beforeend', row);
+        });
+        document.getElementById('totalOrders').innerText = orders.length;
+    }
+    
+    // Load aktivitas
+    const activities = [
+        { icon: 'fa-shopping-cart', text: 'Anda membeli Whey Protein', time: '2 jam lalu' },
+        { icon: 'fa-dumbbell', text: 'Selesai latihan Chest Day', time: '5 jam lalu' },
+        { icon: 'fa-check-circle', text: 'Check-in harian selesai', time: '8 jam lalu' },
+        { icon: 'fa-fire', text: 'Membakar 450 kalori', time: 'Kemarin' }
+    ];
+    
+    const activityList = document.getElementById('activityList');
+    activityList.innerHTML = '';
+    activities.forEach(activity => {
+        const item = `
+            <div class="activity-item d-flex align-items-center">
+                <div class="activity-icon">
+                    <i class="fas ${activity.icon} text-black"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <p class="mb-0">${activity.text}</p>
+                    <small class="text-muted">${activity.time}</small>
+                </div>
+            </div>
+        `;
+        activityList.insertAdjacentHTML('beforeend', item);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', loadMemberData);
