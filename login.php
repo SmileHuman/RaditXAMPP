@@ -1,97 +1,92 @@
-<?php
+<?php 
 session_start();
-require_once 'config.php';
+$page_title = "Login - Fenic Store";
 
-$error = '';
+// Cek jika sudah login, redirect ke members.php
+if (isset($_SESSION['username'])) {
+    header('Location: members.php');
+    exit();
+}
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+$error_message = '';
+
+// Proses login
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
     
-    $user = loginUser($email, $password);
-    if($user) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_name'] = $user['name'];
-        $_SESSION['user_email'] = $user['email'];
-        header('Location: index.php');
+    // Hardcoded credentials
+    $valid_username = 'admin';
+    $valid_password = 'admin123';
+    
+    if ($username === $valid_username && $password === $valid_password) {
+        $_SESSION['username'] = $username;
+        $_SESSION['login_time'] = date('Y-m-d H:i:s');
+        header('Location: members.php');
         exit();
     } else {
-        $error = "Email atau password salah!";
+        $error_message = 'Username atau password salah! (Gunakan admin / admin123)';
     }
 }
+
+include 'includes/header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - UMKM Center</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-light">
-    <div class="container">
-        <div class="row justify-content-center min-vh-100 align-items-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="card shadow-lg border-0">
-                    <div class="card-body p-5">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-store fa-3x text-primary mb-3"></i>
-                            <h2 class="fw-bold">Login UMKM Center</h2>
-                            <p class="text-muted">Masuk ke akun Anda</p>
-                        </div>
-                        
-                        <?php if($error): ?>
-                            <div class="alert alert-danger alert-dismissible fade show">
-                                <i class="fas fa-exclamation-circle me-2"></i><?php echo $error; ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            </div>
-                        <?php endif; ?>
-                        
-                        <form method="POST">
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Email</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                    <input type="email" name="email" class="form-control" required placeholder="contoh@email.com">
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">Password</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                    <input type="password" name="password" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="remember">
-                                <label class="form-check-label" for="remember">Ingat saya</label>
-                                <a href="#" class="float-end">Lupa password?</a>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
-                                <i class="fas fa-sign-in-alt me-2"></i>Login
-                            </button>
-                        </form>
-                        
-                        <hr class="my-4">
-                        
-                        <p class="text-center mb-0">
-                            Belum punya akun? <a href="register.php" class="text-primary fw-bold">Daftar disini</a>
-                        </p>
-                        <p class="text-center text-muted mt-2">
-                            <small>Demo: admin@umkm.com / password123</small>
-                        </p>
+<style>
+
+</style>
+
+<div class="row justify-content-center align-items-center min-vh-80" style="min-height: 70vh;">
+    <div class="col-md-5 col-lg-4">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fas fa-dumbbell fa-3x text-black"></i>
+                <i class="fas fa-capsules fa-3x text-black ms-2"></i>
+                <h3 class="mt-2">Login Fenic Store</h3>
+            </div>
+            <div class="login-body">
+                <?php if ($error_message): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-triangle me-2"></i><?= $error_message ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
+                <?php endif; ?>
+                
+                <form method="POST" action="">
+                    <div class="mb-3 input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+                    </div>
+                    <div class="mb-3 input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember">
+                        <label class="form-check-label text-white-50" for="remember">Ingat saya</label>
+                    </div>
+                    <button type="submit" class="btn btn-login w-100">
+                        <i class="fas fa-sign-in-alt me-2"></i>Masuk
+                    </button>
+                </form>
+                
+                <div class="divider my-4">
+                    <span>atau</span>
                 </div>
-                <p class="text-center text-muted mt-3">
-                    <small>Copyright © 2026 GetSkill</small>
-                </p>
+                
+                <div class="text-center">
+                    <p class="text-white-50">Belum punya akun?</p>
+                    <a href="register.php" class="btn btn-outline-orange-red w-100">
+                        <i class="fas fa-user-plus me-2"></i>Daftar Sekarang
+                    </a>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <small class="text-muted">Demo: admin / admin123</small>
+                </div>
             </div>
         </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+
+<?php include 'includes/footer.php'; ?>
