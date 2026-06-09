@@ -1,152 +1,153 @@
-<?php 
-$page_title = "Home - UMKM Nusantara";
-include 'includes/header.php'; 
-// Contoh penanganan POST untuk HTTP method (PHP)
-$form_message = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cta_email'])) {
-    $email = htmlspecialchars($_POST['cta_email']);
-    $form_message = "<div class='alert alert-success alert-dismissible fade show'>Terima kasih $email! Kami akan hubungi Anda segera.</div>";
-}
-?>
-<!-- Hero Section + Headline + Subheadline -->
-<section>
-    <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse g-5 py-5">
-          <div class="col-10 col-sm-8 col-lg-6">
-            <img
-              src="bootstrap-themes.png"
-              class="d-block mx-lg-auto img-fluid"
-              alt="Bootstrap Themes"
-              width="700"
-              height="500"
-              loading="lazy"
-            />
-          </div>
-          <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
-              Responsive left-aligned hero with image
-            </h1>
-            <p class="lead">
-              Quickly design and customize responsive mobile-first sites with
-              Bootstrap, the world’s most popular front-end open source toolkit,
-              featuring Sass variables and mixins, responsive grid system,
-              extensive prebuilt components, and powerful JavaScript plugins.
-            </p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">
-                Primary
-              </button>
-              <button
-                type="button"
-                class="btn btn-outline-secondary btn-lg px-4"
-              >
-                Default
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+
+<?php require_once 'includes/header.php'; ?>
+
+<!-- Hero Section -->
+<section class="hero-section text-center text-light d-flex align-items-center" style="min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/download (3).jpg'); background-size: cover; background-position: center;">
+    <div class="container">
+        <h1 class="display-4 fw-bold">BANGUN OTOT <span class="text-orange">MAKSIMAL</span></h1>
+        <p class="lead mb-4">Peralatan gym premium untuk hasil latihan terbaik. Mulai transformasi tubuhmu sekarang!</p>
+        <a href="produk.php" class="btn btn-orange btn-lg px-5">Lihat Produk →</a>
+    </div>
 </section>
 
-<section id="tentang">
-
-</section>
-
-<!-- Item Produk (Grid dengan Cards) -->
-<section class="my-5">
-    <h2 class="text-center mb-5"><span class="border-bottom border-orange-red pb-2">Produk Unggulan</span></h2>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card h-100 text-center">
-                <img src="https://picsum.photos/id/13/400/300" class="card-img-top" alt="Kerajinan Kayu">
-                <div class="card-body">
-                    <h5 class="card-title">Ukiran Kayu Khas Jepara</h5>
-                    <p class="card-text">Kerajinan tangan dari kayu jati berkualitas, detail ukiran khas Nusantara.</p>
-                    <a href="detail-product.php?product=woodcraft" class="btn btn-outline-orange-red">Detail</a>
-                </div>
+<!-- Tentang Section -->
+<section id="tentang" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1075&q=80" alt="Tentang Kami" class="img-fluid rounded-3 shadow">
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center">
-                <img src="https://picsum.photos/id/20/400/300" class="card-img-top" alt="Kopi Spesial">
-                <div class="card-body">
-                    <h5 class="card-title">Kopi Arabika Gayo</h5>
-                    <p class="card-text">Biji kopi pilihan dengan aroma khas dan rasa yang smooth.</p>
-                    <a href="detail-product.php?product=coffee" class="btn btn-outline-orange-red">Detail</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 text-center">
-                <img src="https://picsum.photos/id/30/400/300" class="card-img-top" alt="Tenun Ikat">
-                <div class="card-body">
-                    <h5 class="card-title">Tenun Ikat NTT</h5>
-                    <p class="card-text">Kain tradisional dengan motif khas dan warna alami.</p>
-                    <a href="detail-product.php?product=tenun" class="btn btn-outline-orange-red">Detail</a>
+            <div class="col-md-6">
+                <h2 class="fw-bold">Tentang <span class="text-orange">Fenic Store</span></h2>
+                <p class="lead">Distributor terpercaya perlengkapan fitness sejak 2020.</p>
+                <p>Kami menyediakan alat-alat gym berkualitas standar komersial dengan harga terjangkau. Didukung oleh tim ahli kebugaran, kami memastikan setiap produk yang kami jual aman, tahan lama, dan efektif membantu mencapai target fitness Anda.</p>
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="text-orange">500+</h4>
+                            <p>Klien Puas</p>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="text-orange">50+</h4>
+                            <p>Produk Unggulan</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Media Visual (Gambar/Video) -->
-<section class="my-5">
-    <div class="row align-items-center">
-        <div class="col-md-6">
-            <img src="https://picsum.photos/id/104/700/400" class="img-fluid rounded shadow-lg" alt="Proses Produksi UMKM">
+<!-- Featured Products -->
+<section class="py-5 bg-dark">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Produk <span class="text-orange">Unggulan</span></h2>
+        <div class="row g-4">
+            <?php
+            $featured = [
+                ['name' => 'Adjustable Dumbbell', 'price' => 'Rp 1.250.000', 'img' => 'https://images.unsplash.com/photo-1586401100295-7a8096fd231a?w=500&h=300&fit=crop'],
+                ['name' => 'Pull Up Bar', 'price' => 'Rp 450.000', 'img' => 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=500&h=300&fit=crop'],
+                ['name' => 'Resistance Band Set', 'price' => 'Rp 275.000', 'img' => 'https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=500&h=300&fit=crop']
+            ];
+            foreach($featured as $item): ?>
+            <div class="col-md-4">
+                <div class="card product-card h-100 bg-dark border-orange">
+                    <img src="<?= $item['img'] ?>" class="card-img-top" alt="<?= $item['name'] ?>">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><?= $item['name'] ?></h5>
+                        <p class="card-text text-orange fw-bold"><?= $item['price'] ?></p>
+                        <button class="btn btn-outline-orange btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-product="<?= $item['name'] ?>">Detail</button>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
         </div>
-        <div class="col-md-6">
-            <h3 class="text-orange-red">Dibalik Setiap Produk</h3>
-            <p>Kami bekerja sama dengan pengrajin lokal untuk menghasilkan produk berkualitas tinggi yang ramah lingkungan dan berkelanjutan. Tonton video profil kami untuk lebih mengenal perjalanan UMKM Nusantara.</p>
-            <div class="ratio ratio-16x9 mt-3">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=test" title="Video profil UMKM" allowfullscreen></iframe>
+        <div class="text-center mt-5">
+            <a href="produk.php" class="btn btn-orange">Lihat Semua Produk</a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimoni Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Apa Kata <span class="text-orange">Mereka</span></h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card bg-dark p-4 text-center border-orange">
+                    <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                    <p>"Dumbbell-nya solid banget, grip nyaman. Pengiriman cepat. Rekomendasi buat home gym!"</p>
+                    <h6 class="text-orange mt-3">- Andi S.</h6>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-dark p-4 text-center border-orange">
+                    <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                    <p>"Pull up bar kokoh, bisa tahan beban 120kg. Pelayanannya ramah. Top markotop!"</p>
+                    <h6 class="text-orange mt-3">- Sarah M.</h6>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-dark p-4 text-center border-orange">
+                    <div class="mb-3">⭐⭐⭐⭐⭐</div>
+                    <p>"Resistance band set lengkap, kualitas bagus. Cocok untuk latihan di rumah."</p>
+                    <h6 class="text-orange mt-3">- Budi W.</h6>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Testimoni -->
-<section id="testimoni" class="my-5 bg-dark py-4 rounded">
-    <h2 class="text-center mb-4">Apa Kata Pelanggan</h2>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="testimonial-card">
-                <i class="fas fa-star text-warning mb-2"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                <p class="mt-2">"Kopi Gayo-nya luar biasa! Aroma dan rasa sangat memuaskan. Pengiriman cepat."</p>
-                <h6 class="text-orange-red">- Budi, Jakarta</h6>
+<!-- CTA Section -->
+<section class="py-5 text-center bg-orange-gradient">
+    <div class="container">
+        <h3 class="fw-bold">Siap Tingkatkan Latihanmu?</h3>
+        <p class="mb-4">Dapatkan diskon 10% untuk pembelian pertama. Bergabung jadi member sekarang!</p>
+        <a href="register.php" class="btn btn-dark btn-lg px-5">Daftar Sekarang</a>
+    </div>
+</section>
+
+<!-- Kontak Section -->
+<section id="kontak" class="py-5 bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <h3 class="fw-bold">Hubungi <span class="text-orange">Kami</span></h3>
+                <p class="mb-3"><i class="fas fa-map-marker-alt text-orange me-2"></i> Jl. Kebugaran No. 88, Jakarta Selatan</p>
+                <p class="mb-3"><i class="fas fa-phone-alt text-orange me-2"></i> +62 812 3456 7890</p>
+                <p class="mb-3"><i class="fas fa-envelope text-orange me-2"></i> info@fenicstore.com</p>
+                <div class="social-icons mt-4">
+                    <a href="#" class="text-orange me-3 fs-4"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-orange me-3 fs-4"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-orange me-3 fs-4"><i class="fab fa-tiktok"></i></a>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="testimonial-card">
-                <i class="fas fa-star text-warning mb-2"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                <p class="mt-2">"Ukiran kayunya detail banget, cocok untuk souvenir dan dekorasi rumah."</p>
-                <h6 class="text-orange-red">- Dewi, Bandung</h6>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="testimonial-card">
-                <i class="fas fa-star text-warning mb-2"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-                <p class="mt-2">"Tenun ikat NTT sangat cantik, kualitas kainnya bagus dan warna tidak luntur."</p>
-                <h6 class="text-orange-red">- Ratna, Surabaya</h6>
+            <div class="col-lg-6">
+                <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260485283!2d106.822561!3d-6.194741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0xd7dabc7e5cd16f60!2sJakarta%20Selatan%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1712123456789!5m2!1sen!2sid" allowfullscreen loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Call to Action (CTA) + Contoh HTTP POST PHP -->
-<section class="my-5 p-5 text-center bg-black border border-orange-red rounded">
-    <h3 class="text-orange-red">Dapatkan Penawaran Spesial!</h3>
-    <p class="mb-3">Masukkan email Anda untuk mendapatkan diskon 10% & update produk terbaru.</p>
-    <?php if ($form_message) echo $form_message; ?>
-    <form method="POST" class="row justify-content-center g-2">
-        <div class="col-md-5">
-            <input type="email" name="cta_email" class="form-control" placeholder="Alamat Email" required>
+<!-- Modal Global untuk Detail Produk -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-orange">
+                <h5 class="modal-title">Detail Produk</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalProductBody">
+                Informasi produk akan muncul di sini.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-orange" data-bs-dismiss="modal">Tutup</button>
+                <a href="produk.php" class="btn btn-orange">Lihat di Toko</a>
+            </div>
         </div>
-        <div class="col-md-auto">
-            <button type="submit" class="btn btn-orange-red">Kirim Sekarang</button>
-        </div>
-    </form>
-    <small class="text-muted">*Promo terbatas, berlaku syarat & ketentuan</small>
-</section>
+    </div>
+</div>
 
 <?php include 'includes/footer.php'; ?>

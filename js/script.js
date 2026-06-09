@@ -1,143 +1,105 @@
-// ========== REGISTRASI & TABEL (DOM Manipulation) ==========
+// File: js/script.js
 document.addEventListener('DOMContentLoaded', function() {
-    // Cek apakah halaman auth-data.php memiliki form registrasi & tabel
-    const registerForm = document.getElementById('registerForm');
-    const userTableBody = document.getElementById('userTableBody');
-    const modalMessage = document.getElementById('modalMessage');
-    const infoModal = new bootstrap.Modal(document.getElementById('infoModal'), {});
+    // Modal global untuk index.php (dumbbell dll)
+    const productModal = document.getElementById('productModal');
+    if (productModal) {
+        productModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+            const productName = button.getAttribute('data-product');
+            document.getElementById('modalProductBody').innerHTML = `<strong>${productName}</strong><br>Kualitas terbaik, harga bersaing. Tersedia di halaman produk.`;
+        });
+    }
     
-    // Data default untuk tabel (tanpa database)
-    let users = [
-        { name: 'Ahmad Santoso', email: 'ahmad@example.com', phone: '081234567890' },
-        { name: 'Siti Rahmawati', email: 'siti@example.com', phone: '082345678901' }
-    ];
-    
-    function renderUserTable() {
-        if (userTableBody) {
-            userTableBody.innerHTML = '';
-            users.forEach((user, index) => {
-                const row = `<tr>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                    <td>${user.phone}</td>
-                    <td><button class="btn btn-sm btn-outline-danger" onclick="deleteUser(${index})"><i class="fas fa-trash"></i></button></td>
-                </tr>`;
-                userTableBody.insertAdjacentHTML('beforeend', row);
+    // Quick view di produk.php
+    const quickBtns = document.querySelectorAll('.quick-view');
+    if (quickBtns.length) {
+        quickBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const name = btn.getAttribute('data-name');
+                const desc = btn.getAttribute('data-desc');
+                const price = btn.getAttribute('data-price');
+                const modalBody = document.getElementById('quickViewBody');
+                modalBody.innerHTML = `<h5>${name}</h5><p>${desc}</p><p class="text-orange fw-bold">${price}</p>`;
+                new bootstrap.Modal(document.getElementById('quickViewModal')).show();
             });
-        }
+        });
     }
     
-    window.deleteUser = function(index) {
-        users.splice(index, 1);
-        renderUserTable();
-        showModal('Data pengguna berhasil dihapus!');
-    };
-    
-    function showModal(msg) {
-        if (modalMessage) {
-            modalMessage.innerText = msg;
-            infoModal.show();
-        }
-    }
-    
+    // Register form - simpan ke localStorage & tampilkan di tabel member
+    const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('regName').value.trim();
             const email = document.getElementById('regEmail').value.trim();
-            const phone = document.getElementById('regPhone').value.trim();
-            
-            if (!name || !email || !phone) {
-                alert('Semua field harus diisi!');
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value;
+            if (!name || !email || !username || !password) {
+                alert('Harap isi semua field!');
                 return;
             }
-            if (!email.includes('@')) {
-                alert('Email tidak valid!');
-                return;
-            }
-            // Tambah ke array users
-            users.push({ name, email, phone });
-            renderUserTable();
-            registerForm.reset();
-            showModal(`Registrasi berhasil! Selamat datang, ${name}. Data ditambahkan ke tabel.`);
-        });
-        renderUserTable();
-    }
-    
-    // ========== LOGIN (hardcoded username/password) ==========
-    const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            // Hardcoded credentials
-            const validUsername = 'admin';
-            const validPassword = 'admin123';
-            
-            if (username === validUsername && password === validPassword) {
-                alert('Login berhasil! Selamat datang Admin.');
-                // Optional: reset form
-                loginForm.reset();
-            } else {
-                alert('Login gagal! Username atau password salah. (Gunakan admin / admin123)');
-            }
+            let users = JSON.parse(localStorage.getItem('gymUsers')) || [];
+            const newUser = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                username: username,
+                password: btoa(password), // encoding sederhana
+                registeredAt: new Date().toLocaleString()
+            };
+            users.push(newUser);
+            localStorage.setItem('gymUsers', JSON.stringify(users));
+            alert('Pendaftaran berhasil! Silakan lihat data di halaman Members.');
+            window.location.href = 'member.php';
         });
     }
-});
-
-// REGISTER
-// Load data dari localStorage
-function loadMemberData() {
-    // Load pesanan
-    const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
-    const orderTable = document.getElementById('orderHistoryTable');
     
-    if (orders.length === 0) {
-        orderTable.innerHTML = '<tr><td colspan="6" class="text-center text-white-50">Belum ada pesanan</td></tr>';
-        document.getElementById('totalOrders').innerText = '0';
-    } else {
-        orderTable.innerHTML = '';
-        orders.forEach((order, index) => {
-            const row = `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${order.product}</td>
-                    <td>${order.price}</td>
-                    <td>${order.quantity}</td>
-                    <td>${order.date}</td>
-                    <td><span class="badge bg-warning text-dark">${order.status}</span></td>
-                </tr>
-            `;
-            orderTable.insertAdjacentHTML('beforeend', row);
-        });
-        document.getElementById('totalOrders').innerText = orders.length;
+    // Tampilkan data user di tabel member.php
+    const userTableBody = document.getElementById('userTableBody');
+    if (userTableBody) {
+        let users = JSON.parse(localStorage.getItem('gymUsers')) || [];
+        if (users.length > 0) {
+            userTableBody.innerHTML = '';
+            users.forEach((user, index) => {
+                const row = `<tr>
+                    <td>${index+1}</td>
+                    <td>${escapeHtml(user.name)}</td>
+                    <td>${escapeHtml(user.email)}</td>
+                    <td>${escapeHtml(user.username)}</td>
+                    <td>${user.registeredAt}</td>
+                </tr>`;
+                userTableBody.insertAdjacentHTML('beforeend', row);
+            });
+        } else {
+            userTableBody.innerHTML = '<tr><td colspan="5" class="text-center">Belum ada pendaftar. <a href="register.php" class="text-orange">Daftar sekarang</a></td></tr>';
+        }
     }
     
-    // Load aktivitas
-    const activities = [
-        { icon: 'fa-shopping-cart', text: 'Anda membeli Whey Protein', time: '2 jam lalu' },
-        { icon: 'fa-dumbbell', text: 'Selesai latihan Chest Day', time: '5 jam lalu' },
-        { icon: 'fa-check-circle', text: 'Check-in harian selesai', time: '8 jam lalu' },
-        { icon: 'fa-fire', text: 'Membakar 450 kalori', time: 'Kemarin' }
-    ];
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
     
-    const activityList = document.getElementById('activityList');
-    activityList.innerHTML = '';
-    activities.forEach(activity => {
-        const item = `
-            <div class="activity-item d-flex align-items-center">
-                <div class="activity-icon">
-                    <i class="fas ${activity.icon} text-black"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <p class="mb-0">${activity.text}</p>
-                    <small class="text-muted">${activity.time}</small>
-                </div>
-            </div>
-        `;
-        activityList.insertAdjacentHTML('beforeend', item);
+    // Active nav link highlight
+    const currentPath = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath || (currentPath === '' && href === 'index.php')) {
+            link.classList.add('active');
+        } else if (href && href.includes('#') && currentPath === 'index.php') {
+            // skip hash
+        } else if (href === 'produk.php' && currentPath === 'produk.php') {
+            link.classList.add('active');
+        } else if (href === 'member.php' && currentPath === 'member.php') {
+            link.classList.add('active');
+        } else if (href === 'login.php' && currentPath === 'login.php') {
+            link.classList.add('active');
+        } else if (href === 'register.php' && currentPath === 'register.php') {
+            link.classList.add('active');
+        }
     });
-}
-
-document.addEventListener('DOMContentLoaded', loadMemberData);
+});

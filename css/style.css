@@ -1,273 +1,68 @@
-/* Color Theme: Black & Orange-Red */
+/* File: css/style.css */
 :root {
-    --black: #000000;
-    --dark-gray: #111111;
-    --orange-red: #FF4500;
-    --orange-dark: #D03C00;
-    --light-text: #f8f9fa;
+    --orange: #e64b2e;
+    --dark-bg: #121212;
+    --card-bg: #1e1e1e;
 }
-
 body {
-    background-color: var(--black);
-    color: var(--light-text);
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--dark-bg);
+    font-family: 'Segoe UI', system-ui;
 }
-
-.bg-black {
-    background-color: var(--black) !important;
+.text-orange, .text-orange:hover {
+    color: var(--orange) !important;
 }
-
-.border-orange-red {
-    border-color: var(--orange-red) !important;
+.border-orange {
+    border-color: var(--orange) !important;
 }
-
-.text-orange-red {
-    color: var(--orange-red) !important;
-}
-
-.btn-orange-red {
-    background-color: var(--orange-red);
-    border-color: var(--orange-red);
-    color: #fff;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-.btn-orange-red:hover {
-    background-color: var(--orange-dark);
-    border-color: var(--orange-dark);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255,69,0,0.3);
-}
-
-.card {
-    background-color: var(--dark-gray);
-    border: 1px solid #2a2a2a;
-    transition: transform 0.2s;
-}
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--orange-red);
-}
-.card-title, .card-text {
-    color: #f0f0f0;
-}
-
-.navbar-nav .nav-link {
-    color: #ccc;
-    font-weight: 500;
-}
-.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
-    color: var(--orange-red);
-}
-
-.hero-section {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-    border-bottom: 3px solid var(--orange-red);
-    padding: 3rem 0;
-}
-
-.testimonial-card {
-    background: #1e1e1e;
-    border-left: 4px solid var(--orange-red);
-    padding: 1.5rem;
-    border-radius: 12px;
-}
-
-.form-control, .form-select {
-    background-color: #222;
-    border: 1px solid #444;
+.btn-orange {
+    background-color: var(--orange);
+    border-color: var(--orange);
     color: white;
+}
+.btn-orange:hover {
+    background-color: #c73e1f;
+    border-color: #c73e1f;
+    color: white;
+}
+.btn-outline-orange {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+.btn-outline-orange:hover {
+    background-color: var(--orange);
+    color: white;
+}
+.navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+    color: var(--orange);
+}
+.product-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: var(--card-bg);
+    border-width: 1px;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(230,75,46,0.2);
+}
+.bg-orange-gradient {
+    background: linear-gradient(135deg, var(--orange), #b93b1f);
+}
+.hero-section {
+    position: relative;
+}
+.table-bordered.border-orange {
+    border: 1px solid var(--orange);
+}
+.table-dark {
+    background-color: #1e1e1e;
+}
+footer a {
+    transition: opacity 0.2s;
+}
+footer a:hover {
+    opacity: 0.8;
 }
 .form-control:focus {
-    background-color: #2a2a2a;
-    border-color: var(--orange-red);
-    box-shadow: 0 0 0 0.2rem rgba(255,69,0,0.25);
-    color: white;
-}
-
-.table-dark-custom {
-    background-color: #1a1a1a;
-    color: #eee;
-    border-color: #333;
-}
-.table-dark-custom th {
-    background-color: var(--orange-red);
-    color: black;
-}
-.table-dark-custom td {
-    border-color: #333;
-}
-
-/* LOGIN */
-.login-card {
-    background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    overflow: hidden;
-}
-
-.login-header {
-    background: var(--orange-red);
-    padding: 2rem;
-    text-align: center;
-}
-
-.login-header h3 {
-    color: black;
-    margin: 0;
-    font-weight: bold;
-}
-
-.login-body {
-    padding: 2rem;
-}
-
-.input-icon {
-    position: relative;
-}
-
-.input-icon i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--orange-red);
-}
-
-.input-icon input {
-    padding-left: 45px;
-    background-color: #222;
-    border: 1px solid #333;
-    color: white;
-    border-radius: 10px;
-}
-
-.input-icon input:focus {
-    background-color: #2a2a2a;
-    border-color: var(--orange-red);
-    box-shadow: 0 0 0 0.2rem rgba(255,69,0,0.25);
-}
-
-.btn-login {
-    background: var(--orange-red);
-    color: black;
-    font-weight: bold;
-    padding: 12px;
-    border-radius: 10px;
-    transition: all 0.3s;
-}
-
-.btn-login:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255,69,0,0.4);
-    color: black;
-}
-
-.divider {
-    text-align: center;
-    margin: 20px 0;
-    position: relative;
-}
-
-.divider::before,
-.divider::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 45%;
-    height: 1px;
-    background: #333;
-}
-
-.divider::before {
-    left: 0;
-}
-
-.divider::after {
-    right: 0;
-}
-
-.divider span {
-    background: #1a1a1a;
-    padding: 0 15px;
-    color: #888;
-}
-
-/* REGISTER */
-.register-card {
-    background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    overflow: hidden;
-}
-
-.register-header {
-    background: var(--orange-red);
-    padding: 1.5rem;
-    text-align: center;
-}
-
-.register-header h3 {
-    color: black;
-    margin: 0;
-    font-weight: bold;
-}
-
-.register-body {
-    padding: 2rem;
-}
-
-.input-icon {
-    position: relative;
-}
-
-.input-icon i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--orange-red);
-}
-
-.input-icon input {
-    padding-left: 45px;
-    background-color: #222;
-    border: 1px solid #333;
-    color: white;
-    border-radius: 10px;
-}
-
-.input-icon input:focus {
-    background-color: #2a2a2a;
-    border-color: var(--orange-red);
-    box-shadow: 0 0 0 0.2rem rgba(255,69,0,0.25);
-}
-
-.btn-register {
-    background: var(--orange-red);
-    color: black;
-    font-weight: bold;
-    padding: 12px;
-    border-radius: 10px;
-    transition: all 0.3s;
-}
-
-.btn-register:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255,69,0,0.4);
-    color: black;
-}
-
-.terms {
-    font-size: 0.85rem;
-}
-
-.terms a {
-    color: var(--orange-red);
-    text-decoration: none;
-}
-
-.terms a:hover {
-    text-decoration: underline;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 0.25rem rgba(230,75,46,0.25);
 }
