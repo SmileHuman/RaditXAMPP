@@ -5,8 +5,7 @@
     --card-bg: #1e1e1e;
 }
 body {
-    background-color: var(--dark-bg);
-    font-family: 'Segoe UI', system-ui;
+    background: black;
 }
 .text-orange, .text-orange:hover {
     color: var(--orange) !important;
@@ -66,3 +65,25 @@ footer a:hover {
     border-color: var(--orange);
     box-shadow: 0 0 0 0.25rem rgba(230,75,46,0.25);
 }
+/* KERANJANG */
+.cart-badge {
+    position: relative;
+    top: -8px;
+    right: 5px;
+    font-size: 0.7rem;
+    background-color: var(--orange);
+    color: white;
+    border-radius: 50%;
+    padding: 0.2rem 0.4rem;
+}
+.quantity-input {
+    width: 70px;
+    text-align: center;
+}
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+

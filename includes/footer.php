@@ -1,6 +1,6 @@
 
     </main>
-    <footer class="bg-black py-4 mt-5 border-top border-orange">
+    <footer class="bg-black pt-5 pb-5 py-4 mt-5 border-top border-orange">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">

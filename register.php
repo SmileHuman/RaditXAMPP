@@ -1,4 +1,3 @@
-# File: register.php
 <?php include 'includes/header.php'; ?>
 <div class="container py-5" style="min-height: 75vh;">
     <div class="row justify-content-center">

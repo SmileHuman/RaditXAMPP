@@ -1,8 +1,8 @@
-
 <?php require_once 'includes/header.php'; ?>
 
 <!-- Hero Section -->
-<section class="hero-section text-center text-light d-flex align-items-center" style="min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/download (3).jpg'); background-size: cover; background-position: center;">
+<section class="hero-section text-center text-light d-flex align-items-center"
+    style="min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center;">
     <div class="container">
         <h1 class="display-4 fw-bold">BANGUN OTOT <span class="text-orange">MAKSIMAL</span></h1>
         <p class="lead mb-4">Peralatan gym premium untuk hasil latihan terbaik. Mulai transformasi tubuhmu sekarang!</p>
@@ -15,12 +15,15 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 mb-4">
-                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1075&q=80" alt="Tentang Kami" class="img-fluid rounded-3 shadow">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1075&q=80"
+                    alt="Tentang Kami" class="img-fluid rounded-3 shadow">
             </div>
             <div class="col-md-6">
                 <h2 class="fw-bold">Tentang <span class="text-orange">Fenic Store</span></h2>
                 <p class="lead">Distributor terpercaya perlengkapan fitness sejak 2020.</p>
-                <p>Kami menyediakan alat-alat gym berkualitas standar komersial dengan harga terjangkau. Didukung oleh tim ahli kebugaran, kami memastikan setiap produk yang kami jual aman, tahan lama, dan efektif membantu mencapai target fitness Anda.</p>
+                <p>Kami menyediakan alat-alat gym berkualitas standar komersial dengan harga terjangkau. Didukung oleh
+                    tim ahli kebugaran, kami memastikan setiap produk yang kami jual aman, tahan lama, dan efektif
+                    membantu mencapai target fitness Anda.</p>
                 <div class="mt-4">
                     <div class="row">
                         <div class="col-6">
@@ -39,27 +42,31 @@
 </section>
 
 <!-- Featured Products -->
-<section class="py-5 bg-dark">
-    <div class="container">
+<section class="container-fluid">
+    <div class="mx-5 bg-dark py-3 px-4 border border-orange rounded-5">
         <h2 class="text-center fw-bold mb-5">Produk <span class="text-orange">Unggulan</span></h2>
         <div class="row g-4">
             <?php
             $featured = [
-                ['name' => 'Adjustable Dumbbell', 'price' => 'Rp 1.250.000', 'img' => 'https://images.unsplash.com/photo-1586401100295-7a8096fd231a?w=500&h=300&fit=crop'],
-                ['name' => 'Pull Up Bar', 'price' => 'Rp 450.000', 'img' => 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=500&h=300&fit=crop'],
-                ['name' => 'Resistance Band Set', 'price' => 'Rp 275.000', 'img' => 'https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=500&h=300&fit=crop']
+                ['id' => 1, 'name' => 'Adjustable Dumbbell', 'price' => 1250000, 'img' => 'https://images.unsplash.com/photo-1586401100295-7a8096fd231a?w=500&h=300&fit=crop'],
+                ['id' => 2, 'name' => 'Pull Up Bar', 'price' => 450000, 'img' => 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=500&h=300&fit=crop'],
+                ['id' => 3, 'name' => 'Resistance Band Set', 'price' => 275000, 'img' => 'https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=500&h=300&fit=crop']
             ];
-            foreach($featured as $item): ?>
-            <div class="col-md-4">
-                <div class="card product-card h-100 bg-dark border-orange">
-                    <img src="<?= $item['img'] ?>" class="card-img-top" alt="<?= $item['name'] ?>">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"><?= $item['name'] ?></h5>
-                        <p class="card-text text-orange fw-bold"><?= $item['price'] ?></p>
-                        <button class="btn btn-outline-orange btn-sm" data-bs-toggle="modal" data-bs-target="#productModal" data-product="<?= $item['name'] ?>">Detail</button>
+            foreach ($featured as $item): ?>
+                <div class="col-md-4">
+                    <div class="card product-card h-100 bg-dark border-orange">
+                        <img src="<?= $item['img'] ?>" class="card-img-top" alt="<?= $item['name'] ?>">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><?= $item['name'] ?></h5>
+                            <p class="card-text text-orange fw-bold">Rp <?= number_format($item['price'], 0, ',', '.') ?>
+                            </p>
+                            <button class="btn btn-orange btn-sm add-to-cart" data-id="<?= $item['id'] ?>"
+                                data-name="<?= $item['name'] ?>" data-price="<?= $item['price'] ?>">
+                                <i class="fas fa-cart-plus"></i> Beli Sekarang
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php endforeach; ?>
         </div>
         <div class="text-center mt-5">
@@ -113,7 +120,8 @@
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <h3 class="fw-bold">Hubungi <span class="text-orange">Kami</span></h3>
-                <p class="mb-3"><i class="fas fa-map-marker-alt text-orange me-2"></i> Jl. Kebugaran No. 88, Jakarta Selatan</p>
+                <p class="mb-3"><i class="fas fa-map-marker-alt text-orange me-2"></i> Jl. Kebugaran No. 88, Jakarta
+                    Selatan</p>
                 <p class="mb-3"><i class="fas fa-phone-alt text-orange me-2"></i> +62 812 3456 7890</p>
                 <p class="mb-3"><i class="fas fa-envelope text-orange me-2"></i> info@fenicstore.com</p>
                 <div class="social-icons mt-4">
@@ -124,7 +132,9 @@
             </div>
             <div class="col-lg-6">
                 <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260485283!2d106.822561!3d-6.194741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0xd7dabc7e5cd16f60!2sJakarta%20Selatan%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1712123456789!5m2!1sen!2sid" allowfullscreen loading="lazy"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260485283!2d106.822561!3d-6.194741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0xd7dabc7e5cd16f60!2sJakarta%20Selatan%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1712123456789!5m2!1sen!2sid"
+                        allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -150,4 +160,4 @@
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php require_once 'includes/footer.php'; ?>

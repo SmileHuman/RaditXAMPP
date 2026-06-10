@@ -1,4 +1,3 @@
-# File: login.php
 <?php include 'includes/header.php'; 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
