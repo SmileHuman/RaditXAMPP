@@ -1,45 +1,32 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fenic Store - Alat Gym Premium</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GymCore - Alat Fitness Premium</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+<body>
 
-<body class=" text-light">
-    <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-orange sticky-top bg-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-3 text-orange" href="index.php">Fenic Store</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php#tentang">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link" href="produk.php">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php#kontak">Kontak</a></li>
-                    <li class="nav-item"><a class="nav-link" href="members.php">Members</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://hummatech.com" target="_blank">Hummatech</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link btn btn-outline-orange ms-2 px-3" href="login.php">Login</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link btn btn-orange ms-2 px-3" href="register.php">Register</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="cart.php">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span id="cartCount" class="cart-badge">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <main>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.php"><i class="bi bi-dumbbell"></i> GymCore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.php">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="produk.php">Produk</a></li>
+        <li class="nav-item"><a class="nav-link" href="stok.php">Stok</a></li>
+        <li class="nav-item"><a class="nav-link" href="register.php">Daftar</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container my-4">

@@ -1,89 +1,71 @@
-/* File: css/style.css */
-:root {
-    --orange: #e64b2e;
-    --dark-bg: #121212;
-    --card-bg: #1e1e1e;
-}
+/* Custom CSS - GymCore */
 body {
-    background: black;
-}
-.text-orange, .text-orange:hover {
-    color: var(--orange) !important;
-}
-.border-orange {
-    border-color: var(--orange) !important;
-}
-.btn-orange {
-    background-color: var(--orange);
-    border-color: var(--orange);
-    color: white;
-}
-.btn-orange:hover {
-    background-color: #c73e1f;
-    border-color: #c73e1f;
-    color: white;
-}
-.btn-outline-orange {
-    border-color: var(--orange);
-    color: var(--orange);
-}
-.btn-outline-orange:hover {
-    background-color: var(--orange);
-    color: white;
-}
-.navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
-    color: var(--orange);
-}
-.product-card {
-    transition: transform 0.3s, box-shadow 0.3s;
-    background: var(--card-bg);
-    border-width: 1px;
-}
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(230,75,46,0.2);
-}
-.bg-orange-gradient {
-    background: linear-gradient(135deg, var(--orange), #b93b1f);
-}
-.hero-section {
-    position: relative;
-}
-.table-bordered.border-orange {
-    border: 1px solid var(--orange);
-}
-.table-dark {
-    background-color: #1e1e1e;
-}
-footer a {
-    transition: opacity 0.2s;
-}
-footer a:hover {
-    opacity: 0.8;
-}
-.form-control:focus {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 0.25rem rgba(230,75,46,0.25);
-}
-/* KERANJANG */
-.cart-badge {
-    position: relative;
-    top: -8px;
-    right: 5px;
-    font-size: 0.7rem;
-    background-color: var(--orange);
-    color: white;
-    border-radius: 50%;
-    padding: 0.2rem 0.4rem;
-}
-.quantity-input {
-    width: 70px;
-    text-align: center;
-}
-.cart-item-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
+    font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    background: #f8f9fc;
 }
 
+.hero-section {
+    background: linear-gradient(135deg, #0b2b26 0%, #1e4a3b 100%);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.card-product {
+    transition: transform 0.2s ease, box-shadow 0.2s;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+.card-product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+.product-img {
+    height: 200px;
+    object-fit: cover;
+    background: #e9ecef;
+}
+.testimonial-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-left: 5px solid #f7b32b;
+}
+.btn-gym {
+    background-color: #f7b32b;
+    border: none;
+    color: #1e2f2a;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 2rem;
+}
+.btn-gym:hover {
+    background-color: #e09d1c;
+    color: #000;
+}
+.stok-badge {
+    font-size: 0.85rem;
+    background: #e9ecef;
+    padding: 0.3rem 0.7rem;
+    border-radius: 30px;
+}
+footer {
+    background-color: #0f2120;
+    color: #ddd;
+    border-top: 1px solid #2c4a44;
+}
+footer a {
+    color: #f7b32b;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #ffd966;
+}
+.table-responsive-sm {
+    border-radius: 1rem;
+    overflow: hidden;
+}

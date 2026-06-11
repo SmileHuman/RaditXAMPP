@@ -1,44 +1,32 @@
-<?php include 'includes/header.php'; 
-$error = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-    // hardcoded credentials
-    $valid_username = 'admin';
-    $valid_password = 'admin123';
-    if ($username === $valid_username && $password === $valid_password) {
-        echo "<script>alert('Login Berhasil! Selamat datang, $username.'); window.location.href='index.php';</script>";
-        exit;
-    } else {
-        $error = 'Username atau password salah!';
-    }
-}
-?>
-<div class="container py-5" style="min-height: 75vh;">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-5">
-            <div class="card bg-dark border-orange">
-                <div class="card-body p-5">
-                    <h3 class="text-center fw-bold mb-4">Login <span class="text-orange">Member</span></h3>
-                    <?php if($error): ?>
-                        <div class="alert alert-danger"><?= $error ?></div>
-                    <?php endif; ?>
-                    <form method="POST" action="">
-                        <div class="mb-3">
-                            <label class="form-label">Username</label>
-                            <input type="text" name="username" class="form-control bg-dark text-light border-orange" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control bg-dark text-light border-orange" required>
-                        </div>
-                        <button type="submit" class="btn btn-orange w-100">Login</button>
-                        <div class="text-center mt-3">Belum punya akun? <a href="register.php" class="text-orange">Daftar di sini</a></div>
-                    </form>
-                    <div class="mt-3 small text-secondary text-center">Demo: admin / admin123</div>
-                </div>
+<?php include 'includes/header.php';?>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card shadow">
+            <div class="card-header bg-dark text-white"><h4 class="mb-0">Login Member</h4></div>
+            <div class="card-body">
+                <form id="loginForm">
+                    <div class="mb-3"><label>Username / Email</label><input type="text" id="loginUser" class="form-control" placeholder="demo@gymcore.id"></div>
+                    <div class="mb-3"><label>Password</label><input type="password" id="loginPass" class="form-control" placeholder="password123"></div>
+                    <button type="submit" class="btn btn-gym w-100">Masuk</button>
+                </form>
+                <div id="loginMsg" class="mt-3"></div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const validUsername = "demo@gymcore.id";
+    const validPassword = "password123";
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const user = document.getElementById('loginUser').value;
+        const pass = document.getElementById('loginPass').value;
+        const msgDiv = document.getElementById('loginMsg');
+        if(user === validUsername && pass === validPassword) {
+            msgDiv.innerHTML = '<div class="alert alert-success">✅ Login sukses! Selamat datang di GymCore.</div>';
+        } else {
+            msgDiv.innerHTML = '<div class="alert alert-danger">❌ Username atau password salah. Coba lagi.</div>';
+        }
+    });
+</script>
 <?php include 'includes/footer.php'; ?>
